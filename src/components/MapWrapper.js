@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import Map from 'ol/Map'
 import View from 'ol/View'
 import TileLayer from 'ol/layer/Tile'
 import OSM from 'ol/source/OSM';
 import {fromLonLat} from 'ol/proj';
 import {tour} from "../utils/tour"
+import { LocationsContext } from '../contexts/LocationsContext';
 
 function MapWrapper(props) {
-  const london = fromLonLat([-0.12755, 51.507222]);
-  const istanbul = fromLonLat([28.9744, 41.0128]);
-  const rome = fromLonLat([12.5, 41.9]);
-  const bern = fromLonLat([7.4458, 46.95]);
-
-  const locations = [london, bern, rome, istanbul];
+  const {locations} = useContext(LocationsContext)
 
   const initialView = new View({
     center: fromLonLat([37.6178, 55.7517]),
@@ -23,7 +19,6 @@ function MapWrapper(props) {
   const [view, setView] = useState(initialView)
 
   const mapElement = useRef()
-
   const mapRef = useRef()
   mapRef.current = map
 

@@ -2,14 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import GeoJSON from 'ol/format/GeoJSON'
 import MapWrapper from './components/MapWrapper'
+import LocationsContextProvider from './contexts/LocationsContext';
 
 function App() {
-  const [ features, setFeatures ] = useState([])
+  const [features, setFeatures] = useState([])
 
-  useEffect( () => {
+  useEffect(() => {
     fetch('/mock-geojson-api.json')
       .then(response => response.json())
-      .then( (fetchedFeatures) => {
+      .then((fetchedFeatures) => {
         const wktOptions = {
           dataProjection: 'EPSG:4326',
           featureProjection: 'EPSG:3857'
@@ -17,11 +18,13 @@ function App() {
         const parsedFeatures = new GeoJSON().readFeatures(fetchedFeatures, wktOptions)
         setFeatures(parsedFeatures)
       })
-  },[])
-  
+  }, [])
+
   return (
     <div className="App">
-      <MapWrapper features={features} />
+      <LocationsContextProvider>
+        <MapWrapper features={features} />
+      </LocationsContextProvider>
     </div>
   )
 }
