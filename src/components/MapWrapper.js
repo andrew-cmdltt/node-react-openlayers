@@ -21,7 +21,7 @@ function MapWrapper(props) {
   mapRef.current = map
 
   const handleMapClick = () => {
-    axios.get("http://localhost:8080/api/locations")
+    axios.get("https://node-react-openlayers.herokuapp.com/api/locations")
       .then(res => {
         console.log("locations", res.data);
         tour(res.data, view)
