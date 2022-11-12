@@ -40,6 +40,7 @@ function MapWrapper(props) {
     })
 
     setMap(initialMap)
+    setView(initialView)
   }, [])
 
   return (
