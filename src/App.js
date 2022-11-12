@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import GeoJSON from 'ol/format/GeoJSON'
 import MapWrapper from './components/MapWrapper'
-import LocationsContextProvider from './contexts/LocationsContext';
 
 function App() {
   const [features, setFeatures] = useState([])
@@ -22,9 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <LocationsContextProvider>
         <MapWrapper features={features} />
-      </LocationsContextProvider>
     </div>
   )
 }

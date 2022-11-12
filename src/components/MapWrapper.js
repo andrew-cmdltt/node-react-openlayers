@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useRef, useContext } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Map from 'ol/Map'
 import View from 'ol/View'
 import TileLayer from 'ol/layer/Tile'
 import OSM from 'ol/source/OSM';
-import {fromLonLat} from 'ol/proj';
-import {tour} from "../utils/tour"
-import { LocationsContext } from '../contexts/LocationsContext';
+import { fromLonLat } from 'ol/proj';
+import { tour } from "../utils/tour"
+import axios from 'axios';
 
 function MapWrapper(props) {
-  const {locations} = useContext(LocationsContext)
-
   const initialView = new View({
     center: fromLonLat([37.6178, 55.7517]),
     zoom: 6,
@@ -22,8 +20,12 @@ function MapWrapper(props) {
   const mapRef = useRef()
   mapRef.current = map
 
-  const handleMapClick = () => {    
-    tour(locations, view)
+  const handleMapClick = () => {
+    axios.get("http://localhost:8080/api/locations")
+      .then(res => {
+        console.log("locations", res.data);
+        tour(res.data, view)
+      })
   }
 
   useEffect(() => {
