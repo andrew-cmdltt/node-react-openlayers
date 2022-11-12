@@ -1,25 +1,29 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import GeoJSON from 'ol/format/GeoJSON'
+import MapWrapper from './components/MapWrapper'
 
 function App() {
+  const [ features, setFeatures ] = useState([])
+
+  useEffect( () => {
+    fetch('/mock-geojson-api.json')
+      .then(response => response.json())
+      .then( (fetchedFeatures) => {
+        const wktOptions = {
+          dataProjection: 'EPSG:4326',
+          featureProjection: 'EPSG:3857'
+        }
+        const parsedFeatures = new GeoJSON().readFeatures(fetchedFeatures, wktOptions)
+        setFeatures(parsedFeatures)
+      })
+  },[])
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <MapWrapper features={features} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
