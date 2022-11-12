@@ -4,6 +4,4 @@ const locationsController = require("../controllers/locations.controller")
 
 router.get("/locations", locationsController.getLocations)
 
-
-
 module.exports = router 
