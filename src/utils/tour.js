@@ -11,11 +11,7 @@ export function tour(locations, view) {
                 setTimeout(function () {
                     flyTo(convertLocations(locations[index].latitude, locations[index].longitude), next, view);
                 }, delay);
-            } else {
-                alert('Tour complete');
             }
-        } else {
-            alert('Tour cancelled');
         }
     }
     next(true);

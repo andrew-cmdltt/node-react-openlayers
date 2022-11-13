@@ -13,9 +13,9 @@ class LocationsController {
         const locations = await db.query("SELECT * FROM locations")
 
         if (locations.rows.length !== 0) {
-            logger.info("Locations was received successfully");
+            logger.info("Locations were received successfully");
         } else {
-            logger.error("Locations not received");
+            logger.error("Locations were not received");
         }
 
         res.json(locations.rows)

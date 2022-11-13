@@ -1,6 +1,6 @@
 export function flyTo(location, done, view) {
     const duration = 2000;
-    const zoom = view.getZoom();
+    const zoom = 8;
     let parts = 2;
     let called = false;
     function callback(complete) {

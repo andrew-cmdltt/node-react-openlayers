@@ -3,6 +3,7 @@ const locationRouter = require("./routes/locations.routes")
 const PORT = process.env.PORT || 8080
 const cors = require('cors')
 const path = require("path");
+const open = require('open');
 
 const app = express()
 
@@ -16,4 +17,9 @@ app.get('/', (req, res) => res.sendFile(path.resolve('../', 'build', 'index.html
 
 app.use("/api", locationRouter)
 
-app.listen(PORT, () => console.log(`server started on port ${8080}`))
+app.listen(PORT, () => {
+    console.log(`server started on port ${8080}`)
+    if (process.env.NODE_ENV !== "production") {
+        open(`http://localhost:8080/`);
+    }
+})
