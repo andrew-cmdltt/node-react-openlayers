@@ -12,7 +12,7 @@ const pool = (() => {
       });
   } else {
       return new Pool({
-          connectionString: process.env.DATABASE_URL,
+          connectionString: process.env.DB_CONN_STRING,
           ssl: {
               rejectUnauthorized: false
             }
