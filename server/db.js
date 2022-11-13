@@ -4,11 +4,11 @@ require('dotenv').config()
 const pool = (() => {
   if (process.env.NODE_ENV !== 'production') {
       return new Pool({
-          user: "postgres",
-          password: "123",
-          host: "localhost",
-          port: 5432,
-          database: "node_react_openlayers"
+          user: process.env.USER,
+          password: process.env.PASSWORD,
+          host: process.env.HOST,
+          port: process.env.PORT,
+          database: process.env.DATABASE,
       });
   } else {
       return new Pool({
