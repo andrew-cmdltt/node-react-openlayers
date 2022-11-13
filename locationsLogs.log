@@ -44,7 +44,10 @@
 [2022-11-13T13:45:48.964] [INFO] locationsLogs - Locations were received successfully
 [2022-11-13T13:55:13.006] [INFO] locationsLogs - Locations were received successfully
 [2022-11-13T14:48:41.216] [INFO] locationsLogs - Locations were received successfully
+<<<<<<< HEAD
 [2022-11-13T16:27:22.621] [INFO] locationsLogs - Locations were received successfully
 [2022-11-13T16:57:56.172] [INFO] locationsLogs - Locations were received successfully
 [2022-11-13T17:26:16.223] [INFO] locationsLogs - Locations were received successfully
 [2022-11-13T20:34:12.757] [INFO] locationsLogs - Locations were received successfully
+=======
+>>>>>>> d2642b33e2336259c5f615104727eefc60a30bb7
